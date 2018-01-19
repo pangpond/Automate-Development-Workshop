@@ -45,3 +45,78 @@ docker pull bitnami/php-fpm
 docker pull bitnami/postgresql
 docker pull composer
 ```
+
+##4. Basic Commands
+ref from [docker-tutorial-series](https://rominirani.com/docker-tutorial-series-part-2-basic-commands-baaf70807fd3)
+
+```
+docker version
+docker info
+docker images #check sizing and detail of all image
+docker inspect bitnami/nginx:latest
+docker search nginx
+docker ps --all 
+docker run -t -i busybox
+```
+
+##5. Run Container from Image
+5.1. run docker for nginx web server by command
+
+```
+docker run -dt --user root --name nginxtest -p 80:8080 -p 443:8443 bitnami/nginx
+```
+
+5.2. open browser with url: 
+
+```
+http://localhost
+https://localhost
+```
+
+5.3. access shell to container with command:
+
+```
+docker exec -it nginxtest bash
+```
+
+5.4. Check file ```index.html``` with command: 
+
+```
+more index.html
+```
+
+5.5. Check path of container by command: 
+
+```
+pwd
+exit
+```
+5.6. Stop container and remove from system by command:
+
+```
+docker stop nginxtest
+docker rm nginxtest
+```
+
+
+## 6. Docker Machine
+
+6.1 Check the installation by displaying the Machine version:
+
+```
+docker-machine version
+```
+
+6.2 for Ununtu install ```docker-macine``` command following by [Install Machine directly](https://docs.docker.com/machine/install-machine/)
+
+6.3 Create machine
+
+```
+docker-machine create --driver=virtualbox --virtualbox-memory=600 dockerLab
+```
+
+6.3 ssh to docker machine
+
+```
+docker-machine ssh dockerLab
+```
