@@ -1,11 +1,11 @@
 #Workshop 1: Install Docker
 
-##1. Download and install
+## 1. Download and install
 - Windows 10: [Docker Community Edition for Windows](https://store.docker.com/editions/community/docker-ce-desktop-windows). 
 - Mac OSX: [Docker Community Edition for Mac](https://store.docker.com/editions/community/docker-ce-desktop-mac)  
 - Ubuntu: [Docker Community Edition for Ubuntu](https://store.docker.com/editions/community/docker-ce-server-ubuntu)
 	
-##2. Check docker functional
+## 2. Check docker functional
 After finished then run below command for check docker fuctional
 
 ```
@@ -36,7 +36,7 @@ For more examples and ideas, visit:
  https://docs.docker.com/engine/userguide/
 ```
 
-##3. Pull images
+## 3. Pull images
 Run command below for pull image and preparation (Line-by-Line): This will take about 15 - 20 min for pull
 
 ```
@@ -46,7 +46,7 @@ docker pull bitnami/postgresql
 docker pull composer
 ```
 
-##4. Basic Commands
+## 4. Basic Commands
 ref from [docker-tutorial-series](https://rominirani.com/docker-tutorial-series-part-2-basic-commands-baaf70807fd3)
 
 ```
@@ -59,7 +59,7 @@ docker ps --all
 docker run -t -i busybox
 ```
 
-##5. Run Container from Image
+## 5. Run Container from Image
 5.1. run docker for nginx web server by command
 
 ```
@@ -101,22 +101,29 @@ docker rm nginxtest
 
 ## 6. Docker Machine
 
-6.1 Check the installation by displaying the Machine version:
+6.1. Check the installation by displaying the Machine version:
 
 ```
 docker-machine version
 ```
 
-6.2 for Ununtu install ```docker-macine``` command following by [Install Machine directly](https://docs.docker.com/machine/install-machine/)
+6.2. for Ununtu install ```docker-macine``` command following by [Install Machine directly](https://docs.docker.com/machine/install-machine/)
 
-6.3 Create machine
+6.3. Create machine
 
 ```
 docker-machine create --driver=virtualbox --virtualbox-memory=600 dockerLab
 ```
 
-6.3 ssh to docker machine
+6.3. ssh to docker machine
 
 ```
 docker-machine ssh dockerLab
 ```
+
+6.4. repeat Step 5
+
+
+## 7. Map & Volume
+
+7.1. Setup file sharing on docker option to current directory before operate / Apply & Restart
