@@ -56,7 +56,14 @@ docker images #check sizing and detail of all image
 docker inspect bitnami/nginx:latest
 docker search nginx
 docker ps --all 
+
+```
+4.1 try to run and ssh to container immediately
+
+```
 docker run -t -i busybox
+ls -l
+exit
 ```
 
 ## 5. Run Container from Image
@@ -85,45 +92,31 @@ docker exec -it nginxtest bash
 more index.html
 ```
 
-5.5. Check path of container by command: 
+5.5. Check current path inside container by command: 
 
 ```
 pwd
 exit
 ```
-5.6. Stop container and remove from system by command:
+5.6. Stop container and remove running container by command:
 
 ```
+docker ps
 docker stop nginxtest
+docker ps
+docker ps -a
 docker rm nginxtest
 ```
 
-
-## 6. Docker Machine
-
-6.1. Check the installation by displaying the Machine version:
+5.7. Remove Images by command:
 
 ```
-docker-machine version
+docker images
+docker rmi bitnami/nginx
 ```
 
-6.2. for Ununtu install ```docker-macine``` command following by [Install Machine directly](https://docs.docker.com/machine/install-machine/)
-
-6.3. Create machine
+5.7. Remove all unnecessary process and images
 
 ```
-docker-machine create --driver=virtualbox --virtualbox-memory=600 dockerLab
-```
-
-6.3. ssh to docker machine
-
-```
-docker-machine ssh dockerLab
-```
-
-6.4. repeat Step 5
-
-
-## 7. Map & Volume
-
-7.1. Setup file sharing on docker option to current directory before operate / Apply & Restart
+use command that your learned above
+``` 
