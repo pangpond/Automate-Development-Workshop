@@ -56,6 +56,68 @@ docker-machine start dockerLab
 ```
 
 ## 2. Map & Volume
+create folder call ```LabShare``` in same path of ```Automate-Development-Workshop``` and copy ```share``` folder into it
+
+### Folder structure:
+
+```
+│
+├── Automate-Development-Workshop
+│   ├── 01_Download_Install_Docker
+│   │   ├── instruction.md
+│   ├── 02_Docker_Machine
+│   │   ├── instruction.md
+│   │   ├── source
+│   │   │   ├── index.html
+├── GitFlow
+├── LabShare
+│   ├── source
+│   │   ├── index.html
+```
 
 ### 2.1. Setup file sharing
-open VirtualBox and setup file sharing
+
+- open VirtualBox and setup file sharing
+Settings->Shared Folders->Adds new shared folder call ```LabShare``` and browse to directory above step
+	- [x] Auto-Mount
+	- [x] Make Permanent
+	
+- restart VirtualBox by command:
+
+```
+docker-machine restart dockerLab
+```
+
+### 2.2 SSH to docker machine
+
+```
+docker-machine ssh dockerLab
+ls -l /LabShare/
+```
+
+you will see result like this
+
+```
+docker@dockerLab:~$ ls -l /LabShare/
+total 0
+drwxrwxrwx    1 docker   staff          102 Nov  4 01:57 source/
+```
+
+### 2.3 Run docker 
+run docker for nginx web server with map file index.html by command:
+
+```
+docker run -dt --name nginxtest -v /LabShare/source:/opt/bitnami/nginx/html:ro -p 80:8080 -p 443:8443 bitnami/nginx
+```
+
+- open browser with url: ```http://192.168.99.100 https://192.168.99.100```
+- try to change content in ```index.html``` on your machine
+- refresh browser again 
+
+
+### 2.4 7 Stop container and remove from system by command:
+
+```
+docker stop nginxtest
+docker rm nginxtest
+```

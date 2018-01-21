@@ -115,7 +115,7 @@ docker images
 docker rmi bitnami/nginx
 ```
 
-### 5.8. Remove all unnecessary process and images
+### 5.8. Remove all unnecessary process and images to cleanup workshop
 
 ```
 use command that your learned above
