@@ -9,7 +9,7 @@ That mean you dont't need to install again.
 ```
 docker-machine version
 ```
-for Ununtu install ```docker-macine``` command following by [Install Machine directly](https://docs.docker.com/machine/install-machine/)
+for Ununtu install ```docker-machine``` command following by [Install Machine directly](https://docs.docker.com/machine/install-machine/)
 
 ### 1.3. Create machine
 
@@ -20,6 +20,7 @@ docker-machine create --driver=virtualbox --virtualbox-memory=600 dockerLab
 ### 1.4. ssh to docker machine
 
 ```
+docker-machine ls
 docker-machine ssh dockerLab
 ```
 
