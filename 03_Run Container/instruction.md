@@ -133,7 +133,7 @@ docker rm nodejs
 
 ## 4. Detach PYTHON
 
-###4.1 run docker on detach mode with command
+### 4.1 run docker on detach mode with command
 
 ```
 docker run  -d -t --name python -p 5000:5000 \
