@@ -1,0 +1,47 @@
+version: '2'
+services:
+
+  db:
+    image: mariadb:latest
+    container_name: ng_mariadb
+    restart: always
+    volumes:
+      - ./mysql/initdb/:/docker-entrypoint-initdb.d
+      - ./mysql/data/:/var/lib/mysql
+      - ./mysql/conf/my.cnf:/etc/mysql/conf.d/mariadb.cnf
+    environment:
+        - ALLOW_EMPTY_PASSWORD=no
+        - MYSQL_ROOT_PASSWORD=my_password
+        - MYSQL_USER=my_user
+        - MYSQL_PASSWORD=my_password
+        - MYSQL_DATABASE=my_database
+
+  php:
+    build: ./
+    container_name: ng_php-fpm
+    restart: always
+    volumes:
+      - ./www/:/var/www/html
+    expose:
+      - "9000"
+
+  nginx:
+    image: nginx:alpine
+    container_name: ng_nginx
+    restart: always
+    volumes:
+      - ./nginx/conf/nginx.conf:/etc/nginx/conf/nginx.conf:ro
+      - ./nginx/conf.d:/etc/nginx/conf.d:ro
+    volumes_from:
+      - php
+    ports:
+      - 80:80
+
+  pma:
+      image: phpmyadmin/phpmyadmin
+      depends_on:
+        - db
+      container_name: ng-phpmyadmin
+      restart: always
+      ports:
+        - "8000:80"

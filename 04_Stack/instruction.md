@@ -11,7 +11,7 @@ Linux dockerLab 4.4.111-boot2docker #1 SMP Thu Jan 11 16:25:31 UTC 2018 x86_64 G
 
 ### 1.1 Install bash on boot2docker
 
-answer the question in ```{xxx}```
+answer the question in `{xxx}`
 
 ```
 tce
@@ -50,7 +50,6 @@ Current:	2016/11/17 updated 4.3.30 -> 4.4
 A)bout I)nstall O)nDemand D)epends T)ree F)iles siZ)e L)ist S)earch P)rovides K)eywords or Q)uit: {i}
 
 A)bout I)nstall O)nDemand D)epends T)ree F)iles siZ)e L)ist S)earch P)rovides K)eywords or Q)uit: {q}
-
 ```
 
 ### 1.2 Install docker-compose on boot2docker
@@ -60,16 +59,53 @@ sudo curl -L https://github.com/docker/compose/releases/download/1.18.0/docker-c
 sudo chmod +x /usr/local/bin/docker-compose
 
 docker-compose --version
-
 ```
-
 
 ## 2 Seup Stack
 
 ### 2.1 Run composer update using composer image
 
+copy `./source` to ``LabShare` then
+
 ```
-cd /LabShare/yii-quickstart
-./composer-update.sh
+cd /LabShare/yii2_advance
+cd www
+git clone https://github.com/yiisoft/yii2-app-advanced.git .
+cd ..
+docker-compose up -d
 ```
+
 (take a coffee)
+
+```
+docker-compose run --rm php ./init
+docker-compose run --rm php composer --version
+docker-compose run --rm php composer install (take a nap)
+docker-compose run --rm php ./yii migrate
+```
+
+```
+http://ng-frontend/
+http://ng-backend/
+http://ng-pma:8000/
+```
+
+```
+docker exec -it 4ed7a8e4c1ba mysql -u root -p
+```
+
+```
+#!/bin/bash
+
+mysql -u root -e "grant all on *.* to '$MYSQL_USER'@'%' identified by '${MYSQL_PASSWORD}' with grant option; flush privileges;"
+```
+
+and its use in Dockerfile:
+
+```
+# copy the file into the container
+COPY fix-permissions.sh /docker-entrypoint-initdb.d/fix-permissions.sh
+
+# make it executable
+RUN chmod +x /docker-entrypoint-initdb.d/fix-permissions.sh
+```
