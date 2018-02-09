@@ -52,7 +52,7 @@ http://192.168.99.100:3000
 
 > #### Result 
 
-> ```
+```
 CONTAINER ID        IMAGE                           COMMAND             CREATED             STATUS              PORTS                    NAMES
 7ea309394f49        nextgensoft/alpine-web:latest   "node hello.js"     3 minutes ago       Up 3 minutes        0.0.0.0:3000->3000/tcp   nodejs
 ```
@@ -112,10 +112,10 @@ exit
 docker ps
 ```
 > #### Result:
-> ```
+```
 CONTAINER ID        IMAGE                        COMMAND             CREATED             STATUS              PORTS                    NAMES
 e0790d46c800        nextgensoft/alpine-web:latest   "node hello.js"     6 seconds ago       Up 5 seconds        0.0.0.0:3000->3000/tcp   nodejs
-> ```
+```
 
 ### 3.5 Try to stop/start docker with command
 
