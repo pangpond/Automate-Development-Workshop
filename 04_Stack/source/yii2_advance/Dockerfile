@@ -1,6 +1,6 @@
 FROM php:7.1.0-fpm-alpine
 
-MAINTAINER pangpond <info@nextgensoft.co.th>
+MAINTAINER Sathit Seethaphon <dixonsatit@gmail.com>
 
 RUN apk upgrade --update && apk --no-cache add \
     autoconf tzdata openntpd file g++ gcc binutils isl libatomic libc-dev musl-dev make re2c libstdc++ libgcc libcurl curl-dev binutils-libs mpc1 mpfr3 gmp libgomp coreutils freetype-dev libjpeg-turbo-dev libltdl libmcrypt-dev libpng-dev openssl-dev libxml2-dev expat-dev \
